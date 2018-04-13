@@ -1,4 +1,6 @@
-# Testing React Native Child Routes
+# Testing React Nested Routing
+
+Done in both reactjs and react-native
 
 In this project I've declared a route in the App component which creates a route to the FirstView component.
 
