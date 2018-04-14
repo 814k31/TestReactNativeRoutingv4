@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import ChildView from './ChildView';
 
+import { Route, Redirect } from 'react-router-dom';
+
 type Props = {};
 
 /* FirstView Component responsible for redirecting to the ChildView component
