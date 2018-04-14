@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
-import FirstView from './views/FirstView';
+import Carnitas from './views/Carnitas';
 
 type Props = {};
 
@@ -10,7 +10,7 @@ export default class App extends Component<Props> {
         super();
 
         this.state = {
-            goToFirstView: false
+            goToTacos: false
         };
     }
 
@@ -42,13 +42,11 @@ export default class App extends Component<Props> {
 const Tacos  = ({ redirect }) => (
   // here's a nested div
   <div>
-    {/* here's a nested Route,
-        match.url helps us make a relative path */}
     <Route exact
-      path={'/FirstView'}
-      component={FirstView}
+      path={'/Carnitas'}
+      component={Carnitas}
     />
     TACOS
-    <Redirect to='/FirstView' push />
+    <Redirect to='/Carnitas' push />
   </div>
 )
