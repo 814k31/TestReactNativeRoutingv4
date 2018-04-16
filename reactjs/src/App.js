@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Carnitas from './views/Carnitas';
 
@@ -19,7 +19,7 @@ export default class App extends Component<Props> {
 
         return (
             <BrowserRouter>
-                <div>
+                <Switch>
                     {/* Base route */}
                     <Route exact path='/' render={() => {
                         return (
@@ -31,7 +31,7 @@ export default class App extends Component<Props> {
                         );
                     }} />
                     <Route path="/tacos" component={Tacos} />
-                </div>
+                </Switch>
             </BrowserRouter>
         );
     }
@@ -39,14 +39,14 @@ export default class App extends Component<Props> {
 
 
 // when the url matches `/tacos` this component renders
-const Tacos  = ({ redirect }) => (
+const Tacos  = ({ match }) => (
   // here's a nested div
-  <div>
+  <Switch>
+    TACOS
     <Route exact
-      path={'/Carnitas'}
+      path={`${match.url}/Carnitas`}
       component={Carnitas}
     />
-    TACOS
-    <Redirect to='/Carnitas' push />
-  </div>
+    <Redirect to={`${match.url}/Carnitas`} push />
+  </Switch>
 )
