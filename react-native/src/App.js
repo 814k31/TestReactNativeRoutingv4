@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NativeRouter, Route, Redirect } from 'react-router-native';
+import { NativeRouter, Route, Redirect, Switch } from 'react-router-native';
 
 import { Button, Text, View } from 'react-native';
 
@@ -21,7 +21,7 @@ export default class App extends Component<Props> {
 
         return (
             <NativeRouter>
-                <View>
+                <Switch>
                     <Route exact path='/' render={() => {
                         return (
                             <View>
@@ -32,7 +32,7 @@ export default class App extends Component<Props> {
                         );
                     }} />
                     <Route path='/FirstView' component={FirstView} />
-                </View>
+                </Switch>
             </NativeRouter>
         );
     }
