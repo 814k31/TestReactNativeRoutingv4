@@ -9,7 +9,6 @@ type Props = {};
 export default class FirstView extends Component<Props> {
     constructor() {
         super();
-
         this.state = {
             goToChildView: false
         };

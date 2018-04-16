@@ -4,7 +4,6 @@ import { NativeRouter, Route, Redirect } from 'react-router-native';
 import { Button, Text, View } from 'react-native';
 
 import FirstView from './views/FirstView';
-import ChildView from './views/ChildView';
 
 type Props = {};
 
@@ -22,8 +21,7 @@ export default class App extends Component<Props> {
 
         return (
             <NativeRouter>
-                <View style={{flex: 1}}>
-                    {/* Base route */}
+                <View>
                     <Route exact path='/' render={() => {
                         return (
                             <View>
@@ -33,11 +31,7 @@ export default class App extends Component<Props> {
                             </View>
                         );
                     }} />
-                    <Route exact path='/FirstView' component={FirstView} />
-                    {
-                        /* It works if the Route Component is rendered here. Uncomment to test */
-                        /*<Route exact path='/FirstView/ChildView' component={ChildView} />*/
-                    }
+                    <Route path='/FirstView' component={FirstView} />
                 </View>
             </NativeRouter>
         );
