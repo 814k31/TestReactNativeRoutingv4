@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
-
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 
 import FirstView from './views/FirstView';
-import ChildView from './views/ChildView';
 
 type Props = {};
 
@@ -21,7 +19,7 @@ export default class App extends Component<Props> {
 
         return (
             <BrowserRouter>
-                <div>
+                <Switch>
                     {/* Base route */}
                     <Route exact path='/' render={() => {
                         return (
@@ -32,12 +30,8 @@ export default class App extends Component<Props> {
                             </div>
                         );
                     }} />
-                    <Route exact path='/FirstView' component={FirstView} />
-                    {
-                        /* It works if the Route Component is rendered here. Uncomment to test */
-                        /*<Route exact path='/FirstView/ChildView' component={ChildView} />*/
-                    }
-                </div>
+                    <Route path='/FirstView' component={FirstView} />
+                </Switch>
             </BrowserRouter>
         );
     }

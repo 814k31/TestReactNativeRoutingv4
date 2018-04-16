@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 
 import ChildView from './ChildView';
 
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
 
 type Props = {};
-
-/* FirstView Component responsible for redirecting to the ChildView component
- * Why Can't I declare the route here?
- */
 
 export default class FirstView extends Component<Props> {
     constructor() {
@@ -16,20 +12,24 @@ export default class FirstView extends Component<Props> {
 
         this.state = {
             goToChildView: false
-        }
+        };
     }
 
     render() {
-        var redirectToChildView = this.state.goToChildView ? <Redirect to='/FirstView/ChildView' push /> : null;
-
         return (
-            <div>
-                <Route exact path='/FirstView/ChildView' component={ChildView} />
-                {redirectToChildView}
-                {/* It doesn't work with the route component rendered here */}
-                <div>FirstView Component</div>
-                <button onClick={() => this.setState({ goToChildView: true })}>goToChildView</button>
-            </div>
+            <Switch>
+                <Route exact path={this.props.match.url} render={(match) => {
+                    var redirectToChildView = this.state.goToChildView ? <Redirect to={`${this.props.match.url}/ChildView`} push /> : null;
+                    return (
+                        <div>
+                            {redirectToChildView}
+                            <div>FirstView Component</div>
+                            <button onClick={() => this.setState({ goToChildView: true })}>goToChildView</button>
+                        </div>
+                    );
+                }} />
+                <Route path={`${this.props.match.url}/ChildView`} component={ChildView} />
+            </Switch>
         );
     }
 }
